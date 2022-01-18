@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import ThemeProviderComponent from "@/components/base/themeProvider";
+import ThemeProviderComponent from "./components/base/themeProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme, setTheme } from "./redux/slice/settingSlice";
 import {
@@ -11,7 +11,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import Copyright from "@/components/partial/copyRight";
+import Copyright from "./components/partial/copyRight";
 import TopArtists from "./components/partial/topArtists";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import ArtistDetail from "./components/partial/artistDetail";

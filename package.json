@@ -67,6 +67,7 @@
     "@storybook/node-logger": "^6.4.13",
     "@storybook/preset-create-react-app": "^4.0.0",
     "@storybook/react": "^6.4.13",
+    "mini-css-extract-plugin": "2.4.5",
     "react-app-rewired": "^2.1.11",
     "storybook-addon-material-ui": "^0.9.0-alpha.24",
     "webpack": "^5.66.0"
