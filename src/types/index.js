@@ -1,0 +1,1 @@
+export const themeList = Object.freeze(['dark','light']);
