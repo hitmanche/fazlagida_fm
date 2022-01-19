@@ -4,29 +4,24 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getTopArtists } from "../../api";
 import CardDetail from "../../components/partial/cardDetail";
 import { Grid } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchTopArtists,
+  selectTopArtists,
+} from "../../redux/slice/lastfmSlice";
 
 export default function TopArtists() {
-  const queryClient = useQueryClient();
-  const { data } = useQuery("topArtists", null);
+  const dispatch = useDispatch();
+  const { data } = useSelector(selectTopArtists);
 
   useEffect(() => {
-    if (!Array.isArray(data)) {
+    if (!data || data?.length === 0) {
       getTopArtistsCallback();
     }
   }, []);
 
   const getTopArtistsCallback = () => {
-    const current = data?.length || 0;
-    const pageCount = (current + 50) / 50;
-    getTopArtists(pageCount).then((data) => {
-      let updateData = [...data.artists.artist];
-      const oldData = queryClient.getQueryData(["topArtists"]);
-      if (Array.isArray(oldData)) {
-        updateData = [...oldData, ...updateData];
-      }
-      queryClient.setQueriesData(["topArtists"], updateData);
-      //setArtists((old) => [...old, ...data.artists.artist]);
-    });
+    dispatch(fetchTopArtists((data?.length || 0 + 50) / 50));
   };
   return (
     <InfiniteScroll
